@@ -1,0 +1,170 @@
+.hs-kb-category_accordion_nav_list {
+  --bg-color-active: color-mix(in srgb, var(--accent-color) 10%, transparent);
+  --toggle-icon-color: #33475b;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.hs-kb-category_accordion_nav_list ul li {
+  padding: 0;
+  margin: 0;
+}
+
+.hs-kb-category_accordion_nav_list_item {
+  margin: 0;
+}
+
+.hs-kb-category-accordion_link {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.hs-kb-anchor_toggle--active,
+.hs-kb-category-accordion_link--active,
+.hs-kb-category-accordion_link--active:hover {
+  background-color: var(--bg-color-active);
+  font-weight: bold;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children {
+  position: relative;
+  overflow: hidden;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children
+  .hs-kb-category_accordion_nav_list
+  .hs-kb-category-accordion_link {
+  padding-inline-start: 2rem;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children > .hs-kb-anchor_toggle {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children .toggle_icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children input[type='checkbox'] {
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  right: 0;
+  height: 2.55rem;
+  width: 2rem;
+  cursor: pointer;
+  opacity: 0;
+
+  [dir='rtl'] & {
+    right: auto;
+    left: 0;
+  }
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children .toggle_icon--arrow {
+  display: flex;
+  width: 2rem;
+  padding: 0 1rem;
+  align-self: stretch;
+  justify-content: center;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children
+  .toggle_icon--arrow:after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--toggle-icon-color);
+  content: '\276F';
+  font-style: normal;
+  transition: all 0.35s;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children
+  input[type='checkbox']:focus-visible
+  + .hs-kb-anchor_toggle
+  .toggle_icon--arrow {
+  outline: 1px solid Highlight;
+}
+
+.hs-kb-category_accordion_nav_list_item--has-children
+  input[type='checkbox']:checked
+  + .hs-kb-anchor_toggle
+  .toggle_icon--arrow:after {
+  transform: rotate(90deg);
+}
+
+@supports not (interpolate-size: allow-keywords) {
+  .hs-kb-category_accordion_nav_list_item--has-children
+    .hs-kb-category_accordion_nav_list {
+    max-height: 0;
+    transition: all 0.5s;
+  }
+
+  .hs-kb-category_accordion_nav_list_item--has-children
+    input[type='checkbox']:checked
+    ~ .hs-kb-category_accordion_nav_list,
+  .hs-kb-category_accordion_nav_list_item--has-children
+    input[type='checkbox']:not(:checked)
+    ~ .hs-kb-category_accordion_nav_list:focus-within {
+    overflow-y: scroll;
+    max-height: 100vh;
+  }
+}
+
+@supports (interpolate-size: allow-keywords) {
+  .hs-kb-category_accordion_nav_list_item--has-children
+    .hs-kb-category_accordion_nav_list {
+    height: 0;
+    interpolate-size: allow-keywords;
+    transition: all 0.5s;
+  }
+
+  .hs-kb-category_accordion_nav_list_item--has-children
+    input[type='checkbox']:checked
+    ~ .hs-kb-category_accordion_nav_list,
+  .hs-kb-category_accordion_nav_list_item--has-children
+    input[type='checkbox']:not(:checked)
+    ~ .hs-kb-category_accordion_nav_list:focus-within {
+    height: auto;
+  }
+}
+
+.-sidebar-right {
+  /* stylelint-disable-next-line selector-max-combinators */
+  .hs_cos_wrapper > .hs-kb-category_accordion_nav_list > li > a {
+    padding-inline-start: 2.6rem;
+  }
+
+  .hs-kb-category_accordion_nav_list_item--has-children
+    .hs-kb-category_accordion_nav_list
+    .hs-kb-category-accordion_link {
+    padding-inline-start: 3.75rem;
+  }
+
+  .hs-kb-category_accordion_nav_list_item--has-children input[type='checkbox'] {
+    right: auto;
+    left: 0;
+
+    [dir='rtl'] & {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  .hs-kb-category_accordion_nav_list_item--has-children > .hs-kb-anchor_toggle {
+    flex-direction: row-reverse;
+  }
+}

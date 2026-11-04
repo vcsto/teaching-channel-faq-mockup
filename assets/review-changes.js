@@ -1,34 +1,8 @@
-// Reviewer annotations are compared with the captured original support pages.
+// Only outstanding requests relative to the live support site checked November 4, 2026.
 document.addEventListener('DOMContentLoaded', () => {
-  const changes = {
-    'can-i-share-teaching-channel-library-videos.html': {
-      kind: 'updated', title: 'How Do I Share a Video?',
-      note: 'Renamed “Can I Share Teaching Channel Library Videos?” and replaced the longer explanation with three sharing steps. The opening sentence now explicitly requires both users to belong to the same cohort. The existing sharing screenshot is retained.'
-    },
-    'how-do-i-create-a-playlist.html': {
-      kind: 'updated', title: 'How Do I Create a Playlist?',
-      note: 'Changed the instructions to start from a video: Add To → Add to Playlist → Create New Playlist. Previously, they started from Playlists → See All → Create Playlist. Retained the Add To and Create Playlist screenshots; removed screenshots for the old navigation route. Added the three-video minimum for sharing.'
-    },
-    'how-do-i-share-a-playlist-with-everyone.html': {
-      kind: 'added', title: 'How Do I Share a Playlist with Everyone in the Account?',
-      note: 'New article with six steps for choosing the school/district cohort, selecting the whole cohort, and sharing the playlist. Includes the PDF’s screenshots and the three-video sharing requirement.'
-    },
-    'reflect-share-submit.html': {
-      kind: 'added', title: 'What’s the Difference Between Reflect, Share, and Submit?',
-      note: 'New comparison article explaining private reflection, collaborative sharing, and formal submission, with the workflow screenshot from the PDF.'
-    },
-    'how-do-i-access-learning-center-courses.html': {
-      kind: 'added', title: 'How Do I Access Learning Center Courses?',
-      note: 'New article covering course access, enrollment, and opening a course in Canvas. Uses the PDF and its linked access guide; retains a link to that illustrated guide.'
-    },
-    'track-professional-learning-and-course-completion.html': {
-      kind: 'added', title: 'How Can I Track Professional Learning and Course Completion?',
-      note: 'New article covering My Course History, completion letters, and administrator access to Student Progress. Includes the PDF’s screenshots and the linked administrator guide.'
-    }
-  };
   const removedNews = ['New Platform Login Experience', 'Teaching Channel is Excited to Introduce a New Experience!', 'Welcome to the New Teaching Channel Video Library!'];
   const file = decodeURIComponent(location.pathname.split('/').pop()) || 'index.html';
-  const categoryNote = 'Added Learning Center Courses to the homepage and left category menu, with a category description and two articles. Its homepage tile sits in the left column.';
+  const categoryNote = 'Added a left-aligned Learning Center Courses homepage tile with its description, and added the missing sidebar links. These lead to the existing category and its two already-published course articles. Existing category links and article content are unchanged.';
   const newsNote = 'Kept the News and Updates section and removed its three article links: '+removedNews.join('; ')+'.';
   const label = kind => ({added:'Added',updated:'Updated',removed:'Removed'})[kind];
   const element = (tag, className, text) => {
@@ -64,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const summary=element('aside','faq-review-summary');
   summary.setAttribute('aria-label','Changes on this page');
   summary.append(element('h2','','Changes on this page'));
-  summary.append(element('p','faq-review-baseline','Compared with the original support pages captured for this mockup. Later edits to the live knowledge base are not part of this comparison.'));
+  summary.append(element('p','faq-review-baseline','Only changes still needed on the live support site, checked November 4, 2026. Published article updates are already complete and are not highlighted.'));
   const list=element('ul','faq-review-list');
   summary.append(list);
   const home=document.querySelector('.hs-kb-home-list');
@@ -78,52 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (file==='index.html') {
     note(list,'added',categoryNote,'learning-center-courses.html','Learning Center Courses');
     note(list,'removed',newsNote,'news-and-updates.html','News and Updates');
-    Object.entries(changes).forEach(([href,change])=>note(list,change.kind,change.note,href,change.title));
     document.querySelectorAll('.hs-kb-home-list__category').forEach(tile=>{
       const target=filename(tile.querySelector('a'));
       if(target==='learning-center-courses.html') mark(tile,'added');
       if(target==='news-and-updates.html') mark(tile,'removed','3 article links removed');
-      if(target==='video-libraries.html') mark(tile,'updated','2 articles updated · 1 added');
-      if(target==='video-activites.html') mark(tile,'updated','1 article added');
     });
-  } else if (changes[file]) {
-    const change=changes[file];
-    note(list,change.kind,change.note,null,change.title);
-    const body=document.getElementById('hs_cos_wrapper_kb-article-module-5_');
-    if(change.kind==='added') {
-      mark(document.querySelector('h1')?.parentElement,'added','New article');
-      mark(body,'added','New article content and screenshots');
-    } else {
-      if(file==='can-i-share-teaching-channel-library-videos.html') mark(document.querySelector('h1')?.parentElement,'updated','Article title updated');
-      mark(document.getElementById('hs_cos_wrapper_kb-article-module-4'),'updated','Introduction updated');
-      body?.querySelectorAll(':scope > p').forEach(p=>{
-        if(p.querySelector('img') || !p.textContent.trim()) return;
-        const added=p.textContent.includes('at least three videos');
-        mark(p,added?'added':'updated',added?'Added sharing requirement':'Updated instructions');
-      });
-    }
   } else if(file==='news-and-updates.html') {
     note(list,'removed',newsNote,null,'Article links removed; section retained');
     mark(document.querySelector('.hs-kb-category-listing'),'removed','3 article links removed');
   } else if(file==='learning-center-courses.html') {
-    note(list,'added',categoryNote,null,'New category');
-    mark(document.querySelector('.hs-kb-category-listing'),'added','New category and article listing');
-  } else if(file==='video-libraries.html' || file==='video-activites.html') {
-    const relevant=file==='video-libraries.html'?Object.keys(changes).slice(0,3):['reflect-share-submit.html'];
-    relevant.forEach(href=>note(list,changes[href].kind,changes[href].note,href,changes[href].title));
+    summary.append(element('p','','This category and both articles are already published. The remaining change is to link here from the homepage and sidebars where Learning Center Courses is missing.'));
   } else {
     summary.querySelector('h2').textContent='Review notes';
-    const text=file==='search.html'?'Search results link to the new and updated articles.':'No article content was changed on this page. The new Learning Center Courses navigation link is highlighted.';
+    const text=file==='search.html'?'Search results use the current published articles; no article content changes remain.':'This page uses the current published content. No article content changes remain. Missing Learning Center Courses sidebar links are highlighted where added.';
     summary.append(element('p','',text));
   }
-  document.querySelectorAll('.hs-kb-category_accordion_nav_list a').forEach(a=>{
-    if(filename(a)==='learning-center-courses.html') mark(a.parentElement,'added','New category');
+  document.querySelectorAll('.hs-kb-category_accordion_nav_list [data-pending-navigation] a').forEach(a=>{
+    if(filename(a)==='learning-center-courses.html') mark(a.parentElement,'added','Navigation link added');
   });
-  document.querySelectorAll('.hs-kb-category-listing .hs-kb-category-article-list a').forEach(a=>{
-    const change=changes[filename(a)];
-    if(change) mark(a.parentElement,change.kind);
-  });
-
   const controls=element('div','faq-review-controls');
   controls.setAttribute('aria-label','Mockup review controls');
   const toggle=element('button','faq-review-toggle');
@@ -137,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   toggle.append(track);
   controls.append(toggle);
   const legend=element('div','faq-review-legend');
-  for(const kind of ['added','updated','removed']) {
+  for(const kind of ['added','removed']) {
     const chip=element('span','faq-review-badge',label(kind));
     chip.dataset.changeKind=kind;
     legend.append(chip);
