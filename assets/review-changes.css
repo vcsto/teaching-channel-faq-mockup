@@ -1,0 +1,34 @@
+.faq-review-summary,.faq-change-label,.faq-review-legend{display:none}
+.faq-review-controls{position:fixed;right:20px;bottom:20px;z-index:10000;background:#fff;border:1px solid #d9d3e4;border-radius:12px;box-shadow:0 4px 20px #11004526;padding:10px 14px;font-family:Arial,Helvetica,sans-serif;color:#110045;line-height:1.4}
+.faq-review-toggle{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:34px;padding:0;border:0;background:transparent;color:#110045;font:600 14px/1.4 Arial,Helvetica,sans-serif;cursor:pointer;border-radius:4px;letter-spacing:normal;text-transform:none}
+.faq-review-toggle:hover,.faq-review-toggle:active{background:transparent;color:#110045;border:0}
+.faq-review-toggle:focus-visible{outline:3px solid #7656aa;outline-offset:5px}
+.faq-review-switch{display:block;width:38px;height:22px;background:#d7d5dc;border-radius:20px;padding:3px;box-sizing:border-box;transition:background .15s}
+.faq-review-switch-thumb{display:block;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0003;transition:transform .15s}
+.faq-review-toggle[aria-checked=true] .faq-review-switch{background:#4d2b6b}
+.faq-review-toggle[aria-checked=true] .faq-review-switch-thumb{transform:translateX(16px)}
+.faq-review-on .faq-review-legend{display:flex;gap:6px;margin-top:9px;justify-content:space-between}
+.faq-review-badge,.faq-review-on .faq-change-label{display:inline-block;font:700 11px/1.4 Arial,Helvetica,sans-serif!important;padding:3px 7px;border-radius:4px;background:#fff1cb;color:#704b00;vertical-align:middle;white-space:normal;letter-spacing:normal;text-transform:none}
+.faq-review-badge[data-change-kind=added], [data-change-kind=added]>.faq-review-badge,[data-change-kind=added]>.faq-change-label{background:#dcf4e4;color:#145c32}
+.faq-review-badge[data-change-kind=removed], [data-change-kind=removed]>.faq-review-badge,[data-change-kind=removed]>.faq-change-label{background:#fbe2e6;color:#8b2037}
+.faq-review-on .faq-change{outline:2px solid #c68c16;outline-offset:4px;border-radius:2px;background-color:#fff9e9}
+.faq-review-on .faq-change[data-change-kind=added]{outline-color:#2c8c51;background-color:#f0fbf3}
+.faq-review-on .faq-change[data-change-kind=removed]{outline-color:#bc4560;background-color:#fff5f6}
+.faq-review-on .faq-change-label{margin:0 8px 6px 0}
+.faq-review-on .hs-kb-home-list__category>.faq-change-label{display:table;margin-bottom:10px}
+.faq-review-on .hs-kb-category_accordion_nav_list_item>.faq-change-label{margin:6px 10px 0}
+.faq-review-on .hs-kb-category-article-list>li.faq-change{margin-top:12px;margin-bottom:12px}
+.faq-review-on .faq-review-summary{display:block;background:#f8f6fb;border:1px solid #ddd5e7;border-left:4px solid #4d2b6b;border-radius:4px;padding:20px;margin:0 0 32px;font-family:Arial,Helvetica,sans-serif;color:#34495e}
+.faq-review-on .faq-review-summary--home{max-width:1000px;box-sizing:border-box;margin:32px auto 24px}
+.faq-review-summary h2{font:700 20px/1.4 Arial,Helvetica,sans-serif;margin:0 0 8px;color:#342147}
+.faq-review-summary .faq-review-baseline{font:13px/1.5 Arial,Helvetica,sans-serif;margin:0 0 18px;color:#5d5964}
+.faq-review-summary .faq-review-list{list-style:none;padding:0;margin:0}
+.faq-review-summary .faq-review-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;margin:0;border-top:1px solid #e4deec}
+.faq-review-item>.faq-review-badge{flex:0 0 auto;margin-top:2px}
+.faq-review-copy{min-width:0;font:14px/1.55 Arial,Helvetica,sans-serif}
+.faq-review-copy>a,.faq-review-copy>strong{font:700 14px/1.55 Arial,Helvetica,sans-serif;color:#352052}
+.faq-review-copy>p{font:14px/1.55 Arial,Helvetica,sans-serif;margin:4px 0 0;color:#34495e}
+@media(max-width:1050px){.faq-review-on .faq-review-summary--home{margin-left:24px;margin-right:24px}}
+@media(max-width:600px){.faq-review-controls{right:12px;bottom:12px;max-width:calc(100vw - 24px);padding:9px 12px}.faq-review-on .faq-review-summary{padding:16px}.faq-review-summary .faq-review-item{gap:8px}.faq-review-copy{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){.faq-review-switch,.faq-review-switch-thumb{transition:none}}
+@media print{.faq-review-controls{display:none}.faq-review-on .faq-review-summary{break-inside:avoid}}

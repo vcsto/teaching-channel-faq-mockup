@@ -9,3 +9,10 @@ External platform and guide links remain external.
 The existing live-site footer logo issue is preserved.
 
 No application backend, credentials, source PDF, or development tools are included.
+
+Change review:
+- Use Show changes in the lower-right corner. It starts off for new visitors.
+- Added content is green, updated content amber, and removal notes pink.
+- Notes compare against the original support pages captured for this mockup.
+- The choice follows internal navigation. Add ?changes=1 to a page URL to share
+  a link with annotations enabled. Turning it off restores the clean layout.
